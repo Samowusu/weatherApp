@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-
+import WeatherSummaryBottom from "./WeatherSummaryBottom";
 import WeatherSummaryTop from "./WeatherSummaryTop";
+import { Theme } from "../../Theme";
 
 function WeatherSummary() {
   return (
-    <SummaryContainer>
+    <SummaryContainer $borderColor={Theme.ash}>
       <WeatherSummaryTop />
+      <WeatherSummaryBottom />
     </SummaryContainer>
   );
 }
@@ -14,9 +16,8 @@ function WeatherSummary() {
 export default WeatherSummary;
 
 const SummaryContainer = styled.div`
-  width: 90%;
-  max-width: 430px;
-  border: 1px solid red;
-  margin: 0 auto;
+  width: 100%;
   padding: 15px 1rem 10px;
+  border: 1px solid ${(props) => props.$borderColor ?? "none"};
+  border-radius: 4px;
 `;

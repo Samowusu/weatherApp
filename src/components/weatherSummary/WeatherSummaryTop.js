@@ -5,7 +5,7 @@ import Typography from "../commons/Typography";
 
 function WeatherSummaryTop() {
   return (
-    <WeatherSummaryContainer>
+    <WeatherSummaryTopContainer>
       <TextContainer>
         <Typography fontSize={"xl"} color="black" textAlign={"start"}>
           Helsinki
@@ -20,25 +20,27 @@ function WeatherSummaryTop() {
           0 ° C
         </Typography>
       </WeatherContainer>
-    </WeatherSummaryContainer>
+    </WeatherSummaryTopContainer>
   );
 }
 
 export default WeatherSummaryTop;
 
-const WeatherSummaryContainer = styled.div`
+const WeatherSummaryTopContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  border: 1px solid blue;
   align-items: center;
 `;
 
-const TextContainer = styled.div`
+export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  background-color: ${(props) => props.$backgroundColor ?? "transparent"};
 `;
 
 const WeatherContainer = styled.div`
   display: flex;
+  width: 50%;
 `;

@@ -34,7 +34,7 @@ function DropDown({ onChange }) {
       </DropDownHeader>
       {isOpen && (
         <DropDownListContainer>
-          <DropDownList>
+          <DropDownList $backgroundColor={Theme.white} $borderColor={Theme.ash}>
             {options.map((option, index) => (
               <ListItem onClick={() => selectOptionHandler(option)} key={index}>
                 {option}
@@ -63,18 +63,19 @@ const DropDownHeader = styled.div`
   padding: 20px 1rem;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   font-size: 13px;
-  /* color: ${(props) => props.$color ?? "black"}; */
   background: ${(props) => props.$backgroundColor ?? "transparent"};
   border-radius: 4px;
   border: 1px solid ${(props) => props.$borderColor ?? "none"};
 `;
 
-const DropDownListContainer = styled.div``;
+const DropDownListContainer = styled.div`
+  z-index: 100;
+`;
 
 const DropDownList = styled.ul`
   padding-left: 5px;
-  background: #ffffff;
-  border: 1px solid #e6e6e6;
+  background: ${(props) => props.$backgroundColor ?? "transparent"};
+  border: 1px solid ${(props) => props.$borderColor ?? "none"};
   color: #262626;
   font-size: 13px;
 `;
