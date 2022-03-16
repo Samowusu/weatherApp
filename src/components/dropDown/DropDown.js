@@ -49,13 +49,13 @@ function DropDown({ onChange }) {
 
 export default DropDown;
 
-const DropDownContainer = styled("div")`
+const DropDownContainer = styled.div`
   width: 90%;
   margin: 0 auto;
   cursor: pointer;
 `;
 
-const DropDownHeader = styled("div")`
+const DropDownHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,9 +69,9 @@ const DropDownHeader = styled("div")`
   border: 1px solid ${(props) => props.$borderColor ?? "none"};
 `;
 
-const DropDownListContainer = styled("div")``;
+const DropDownListContainer = styled.div``;
 
-const DropDownList = styled("ul")`
+const DropDownList = styled.ul`
   padding-left: 5px;
   background: #ffffff;
   border: 1px solid #e6e6e6;
@@ -79,7 +79,7 @@ const DropDownList = styled("ul")`
   font-size: 13px;
 `;
 
-const ListItem = styled("li")`
+const ListItem = styled.li`
   list-style: none;
   cursor: pointer;
   &:hover {
