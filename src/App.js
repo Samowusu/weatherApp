@@ -1,6 +1,8 @@
 import React from "react";
+import Glossary from "./components/glossary/Glossary";
+
 function App() {
-  return <div>Hello World</div>;
+  return <Glossary />;
 }
 
 export default App;
