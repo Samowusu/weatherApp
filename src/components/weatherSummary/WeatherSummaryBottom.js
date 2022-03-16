@@ -3,26 +3,33 @@ import styled from "styled-components";
 import Typography from "../commons/Typography";
 import { TextContainer } from "./WeatherSummaryTop";
 
-function WeatherSummaryBottom() {
+WeatherSummaryBottom.defaultProps = {
+  date: "May 2nd",
+  time: "11:53",
+  wind: "5.1 m/s",
+  humidity: "86 %",
+  precipitation: "5 mm",
+};
+function WeatherSummaryBottom({ date, time, wind, humidity, precipitation }) {
   return (
     <WeatherSummaryBottomContainer>
       <TextContainer>
         <Typography fontSize={"l"} color="black" textAlign={"start"}>
-          May 2nd
+          {date}
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"start"}>
-          11:53
+          {time}
         </Typography>
       </TextContainer>
       <TextContainer>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Wind: 5.1 m/s
+          Wind: {wind}
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Humidity: 86 %
+          Humidity: {humidity}
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Precipitation(3h): 5 mm
+          Precipitation(3h): {precipitation}
         </Typography>
       </TextContainer>
     </WeatherSummaryBottomContainer>

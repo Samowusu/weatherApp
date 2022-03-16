@@ -3,15 +3,20 @@ import styled from "styled-components";
 import CloudIcon from "../../assets/svgs/CloudIcon";
 import Typography from "../commons/Typography";
 
-function WeatherSummaryTop() {
+WeatherSummaryTop.defaultProps = {
+  city: "Helsinki",
+  description: "Scattered clouds",
+  temperature: "0 ° C",
+};
+function WeatherSummaryTop({ city, description, temperature }) {
   return (
     <WeatherSummaryTopContainer>
       <TextContainer>
         <Typography fontSize={"xl"} color="black" textAlign={"start"}>
-          Helsinki
+          {city}
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"start"}>
-          Scattered clouds
+          {description}
         </Typography>
       </TextContainer>
       <WeatherContainer>
@@ -19,7 +24,7 @@ function WeatherSummaryTop() {
           <CloudIcon />
         </IconContainer>
         <Typography fontSize={"xxxl"} color="black" marginLeft={"10px"}>
-          0 ° C
+          {temperature}
         </Typography>
       </WeatherContainer>
     </WeatherSummaryTopContainer>

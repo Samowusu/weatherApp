@@ -2,14 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import WeatherDetailCard from "./WeatherDetailCard";
 
-function WeatherDetails() {
+function WeatherDetails({ weatherList }) {
   return (
     <WeatherDetailsContainer>
-      <WeatherDetailCard />
-      <WeatherDetailCard />
-      <WeatherDetailCard />
-      <WeatherDetailCard />
-      <WeatherDetailCard />
+      {weatherList.map((weatherItem, index) => (
+        <WeatherDetailCard
+          key={index}
+          time={weatherItem.time}
+          temperature={weatherItem.temperature}
+          humidity={weatherItem.humidity}
+          wind={weatherItem.wind}
+          precipitation={weatherItem.precipitation}
+        />
+      ))}
     </WeatherDetailsContainer>
   );
 }

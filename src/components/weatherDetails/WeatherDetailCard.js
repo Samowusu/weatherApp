@@ -8,11 +8,25 @@ import {
 import { Theme } from "../../Theme";
 import SunIcon from "../../assets/svgs/SunIcon";
 
-function WeatherDetailCard() {
+WeatherDetailCard.defaultProps = {
+  time: "15:00",
+  temperature: "-1°C",
+  wind: "2.1 m/s",
+  humidity: "5 %",
+  precipitation: "10 mm",
+};
+
+function WeatherDetailCard({
+  time,
+  temperature,
+  wind,
+  humidity,
+  precipitation,
+}) {
   return (
     <DetailCard $borderColor={Theme.ash}>
       <Typography fontSize={"m"} color="grey" marginBottom={"5px"}>
-        15:00
+        {time}
       </Typography>
       <IconContainer>
         <SunIcon />
@@ -23,7 +37,7 @@ function WeatherDetailCard() {
         marginTop={"5px"}
         marginBottom="5px"
       >
-        -1°C
+        {temperature}
       </Typography>
       <TextContainer $backgroundColor={Theme.lightBlue} $width={"100%"}>
         <Typography
@@ -32,13 +46,13 @@ function WeatherDetailCard() {
           marginBottom={"3px"}
           marginTop={"5px"}
         >
-          2.1 m/s
+          {wind}
         </Typography>
         <Typography fontSize={"s"} color="grey" marginBottom={"3px"}>
-          5 %
+          {humidity}
         </Typography>
         <Typography fontSize={"s"} color="grey" marginBottom={"5px"}>
-          1 mm
+          {precipitation}
         </Typography>
       </TextContainer>
     </DetailCard>
@@ -49,6 +63,7 @@ export default WeatherDetailCard;
 
 const DetailCard = styled.div`
   width: 18%;
+  max-width: 75px;
   display: flex;
   align-items: center;
   flex-direction: column;

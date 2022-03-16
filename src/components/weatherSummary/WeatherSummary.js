@@ -4,11 +4,27 @@ import WeatherSummaryBottom from "./WeatherSummaryBottom";
 import WeatherSummaryTop from "./WeatherSummaryTop";
 import { Theme } from "../../Theme";
 
-function WeatherSummary() {
+function WeatherSummary({ summaryData }) {
   return (
     <SummaryContainer $borderColor={Theme.ash}>
-      <WeatherSummaryTop />
-      <WeatherSummaryBottom />
+      {summaryData.map((weatherItem, index) => (
+        <WeatherSummaryTop
+          key={index}
+          city={weatherItem.city}
+          description={weatherItem.description}
+          temperature={weatherItem.temperature}
+        />
+      ))}
+      {summaryData.map((weatherItem, index) => (
+        <WeatherSummaryBottom
+          date={weatherItem.date}
+          humidity={weatherItem.humidity}
+          key={index}
+          precipitation={weatherItem.precipitation}
+          time={weatherItem.time}
+          wind={weatherItem.wind}
+        />
+      ))}
     </SummaryContainer>
   );
 }

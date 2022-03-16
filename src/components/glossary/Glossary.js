@@ -7,6 +7,9 @@ import WeatherDetails from "../weatherDetails/WeatherDetails";
 import WeatherNews from "../weatherNews/WeatherNews";
 import WeatherSummary from "../weatherSummary/WeatherSummary";
 
+// Data
+import { weatherData, weatherSummaryData } from "../../Data";
+
 function Glossary() {
   const [filteredCity, setFilteredCity] = useState(null);
 
@@ -18,16 +21,20 @@ function Glossary() {
     setFilteredCity(value);
     console.log("from glossary");
   };
+
   return (
     <>
       <Header />
       <Typography>Glossary...</Typography>
-      <WeatherDetails />
+      <WeatherDetails weatherList={weatherData} />
       <WeatherDetailCard />
-      <WeatherSummary />
+      <WeatherSummary summaryData={weatherSummaryData} />
 
       <DropDown onChange={(value) => cityFilterHandler(value)} />
-      <WeatherNews />
+      <WeatherNews
+        weatherDetailsData={weatherData}
+        weatherSummaryData={weatherSummaryData}
+      />
     </>
   );
 }

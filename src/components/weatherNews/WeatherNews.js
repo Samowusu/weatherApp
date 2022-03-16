@@ -3,12 +3,12 @@ import styled from "styled-components";
 import WeatherDetails from "../weatherDetails/WeatherDetails";
 import WeatherSummary from "../weatherSummary/WeatherSummary";
 
-function WeatherNews() {
+function WeatherNews({ weatherSummaryData, weatherDetailsData }) {
   return (
     <Main>
       <WeatherNewsContainer>
-        <WeatherSummary />
-        <WeatherDetails />
+        <WeatherSummary summaryData={weatherSummaryData} />
+        <WeatherDetails weatherList={weatherDetailsData} />
       </WeatherNewsContainer>
     </Main>
   );
