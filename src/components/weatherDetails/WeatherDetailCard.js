@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "../commons/Typography";
-import { TextContainer } from "../weatherSummary/WeatherSummaryTop";
+import {
+  TextContainer,
+  IconContainer,
+} from "../weatherSummary/WeatherSummaryTop";
 import { Theme } from "../../Theme";
 import SunIcon from "../../assets/svgs/SunIcon";
 
@@ -11,7 +14,9 @@ function WeatherDetailCard() {
       <Typography fontSize={"m"} color="grey" marginBottom={"5px"}>
         15:00
       </Typography>
-      <SunIcon />
+      <IconContainer>
+        <SunIcon />
+      </IconContainer>
       <Typography
         fontSize={"l"}
         color="black"
@@ -20,7 +25,7 @@ function WeatherDetailCard() {
       >
         -1°C
       </Typography>
-      <TextContainer $backgroundColor={Theme.lightBlue}>
+      <TextContainer $backgroundColor={Theme.lightBlue} $width={"100%"}>
         <Typography
           fontSize={"s"}
           color="grey"

@@ -5,18 +5,24 @@ import WeatherSummary from "../weatherSummary/WeatherSummary";
 
 function WeatherNews() {
   return (
-    <WeatherNewsContainer>
-      <WeatherSummary />
-      <WeatherDetails />
-    </WeatherNewsContainer>
+    <Main>
+      <WeatherNewsContainer>
+        <WeatherSummary />
+        <WeatherDetails />
+      </WeatherNewsContainer>
+    </Main>
   );
 }
 
 export default WeatherNews;
 
+const Main = styled.div`
+  width: 90%;
+  display: flex;
+  margin: 15px auto;
+`;
+
 const WeatherNewsContainer = styled.div`
   width: 90%;
   max-width: 430px;
-  margin-left: 60px;
-  margin-top: 20px;
 `;

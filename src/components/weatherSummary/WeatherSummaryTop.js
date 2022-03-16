@@ -15,7 +15,9 @@ function WeatherSummaryTop() {
         </Typography>
       </TextContainer>
       <WeatherContainer>
-        <CloudIcon />
+        <IconContainer>
+          <CloudIcon />
+        </IconContainer>
         <Typography fontSize={"xxxl"} color="black" marginLeft={"10px"}>
           0 ° C
         </Typography>
@@ -36,11 +38,13 @@ const WeatherSummaryTopContainer = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   background-color: ${(props) => props.$backgroundColor ?? "transparent"};
+  width: ${(props) => props.$width ?? "none"};
 `;
 
 const WeatherContainer = styled.div`
   display: flex;
-  width: 50%;
+  justify-content: flex-end;
 `;
+
+export const IconContainer = styled.div``;
