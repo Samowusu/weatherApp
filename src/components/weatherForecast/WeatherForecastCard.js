@@ -4,11 +4,11 @@ import Typography from "../commons/Typography";
 import {
   TextContainer,
   IconContainer,
-} from "../weatherSummary/WeatherSummaryTop";
+} from "../currentWeather/CurrentWeatherTop";
 import { Theme } from "../../Theme";
 import SunIcon from "../../assets/svgs/SunIcon";
 
-WeatherDetailCard.defaultProps = {
+WeatherForecastCard.defaultProps = {
   time: "15:00",
   temperature: "-1°C",
   wind: "2.1 m/s",
@@ -16,7 +16,7 @@ WeatherDetailCard.defaultProps = {
   precipitation: "10 mm",
 };
 
-function WeatherDetailCard({
+function WeatherForecastCard({
   time,
   temperature,
   wind,
@@ -24,7 +24,7 @@ function WeatherDetailCard({
   precipitation,
 }) {
   return (
-    <DetailCard $borderColor={Theme.ash}>
+    <ForecastCard $borderColor={Theme.ash}>
       <Typography fontSize={"m"} color="grey" marginBottom={"5px"}>
         {time}
       </Typography>
@@ -55,13 +55,13 @@ function WeatherDetailCard({
           {precipitation}
         </Typography>
       </TextContainer>
-    </DetailCard>
+    </ForecastCard>
   );
 }
 
-export default WeatherDetailCard;
+export default WeatherForecastCard;
 
-const DetailCard = styled.div`
+const ForecastCard = styled.div`
   width: 18%;
   max-width: 75px;
   display: flex;

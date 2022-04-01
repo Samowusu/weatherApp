@@ -2,16 +2,28 @@ import React, { useState, useEffect } from "react";
 import Typography from "../commons/Typography";
 import DropDown from "../dropDown/DropDown";
 import Header from "../header/Header";
-import WeatherDetailCard from "../weatherDetails/WeatherDetailCard";
-import WeatherDetails from "../weatherDetails/WeatherDetails";
+import WeatherForecastCard from "../weatherForecast/WeatherForecastCard";
+import WeatherForecast from "../weatherForecast/WeatherForecast";
 import WeatherNews from "../weatherNews/WeatherNews";
-import WeatherSummary from "../weatherSummary/WeatherSummary";
+import WeatherSummary from "../currentWeather/CurrentWeather";
 
 // Data
-import { weatherData, weatherSummaryData } from "../../Data";
+import { weatherData, currentWeather } from "../../Data";
 
 function Glossary() {
   const [filteredCity, setFilteredCity] = useState(null);
+  //   const [currentWeatherState, setCurrentWeatherState] = useState([])
+
+  //   const coords = [{lat : 214, lng: 329},{lat : 214, lng: 329},{lat : 214, lng: 329},{lat : 214, lng: 329},]
+  // {
+  // coords.map((coord) =>
+  //   const {data} = useHook({lat: coord.lat, lng: coord.lng})
+  //   )}
+  //   useEffect(() => {
+  //     let weather = [];
+  //     weather.push(dataBase);
+  //     setCurrentWeatherState(weather)
+  //   }, [dataBase])
 
   useEffect(() => {
     console.log(filteredCity);
@@ -25,16 +37,15 @@ function Glossary() {
   return (
     <>
       <Header />
-      <Typography>Glossary...</Typography>
-      <WeatherDetails weatherList={weatherData} />
-      <WeatherDetailCard />
-      <WeatherSummary summaryData={weatherSummaryData} />
 
       <DropDown onChange={(value) => cityFilterHandler(value)} />
-      <WeatherNews
-        weatherDetailsData={weatherData}
-        weatherSummaryData={weatherSummaryData}
-      />
+      {currentWeather.map((weather, index) => (
+        <WeatherNews
+          currentWeatherData={weather}
+          key={index}
+          weatherForecastData={weatherData}
+        />
+      ))}
     </>
   );
 }

@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import Typography from "../commons/Typography";
-import { TextContainer } from "./WeatherSummaryTop";
+import { TextContainer } from "./CurrentWeatherTop";
 
-WeatherSummaryBottom.defaultProps = {
+CurrentWeatherBottom.defaultProps = {
   date: "May 2nd",
   time: "11:53",
   wind: "5.1 m/s",
   humidity: "86 %",
-  precipitation: "5 mm",
+  precipitation: "5 ",
 };
-function WeatherSummaryBottom({ date, time, wind, humidity, precipitation }) {
+function CurrentWeatherBottom({ date, time, wind, humidity, precipitation }) {
   return (
-    <WeatherSummaryBottomContainer>
+    <CurrentWeatherBottomContainer>
       <TextContainer>
         <Typography fontSize={"l"} color="black" textAlign={"start"}>
           {date}
@@ -23,22 +23,22 @@ function WeatherSummaryBottom({ date, time, wind, humidity, precipitation }) {
       </TextContainer>
       <TextContainer>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Wind: {wind}
+          Wind: {wind} m/s
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Humidity: {humidity}
+          Humidity: {humidity}%
         </Typography>
         <Typography fontSize={"m"} color="grey" textAlign={"end"}>
-          Precipitation(3h): {precipitation}
+          Precipitation(3h): {precipitation}mm
         </Typography>
       </TextContainer>
-    </WeatherSummaryBottomContainer>
+    </CurrentWeatherBottomContainer>
   );
 }
 
-export default WeatherSummaryBottom;
+export default CurrentWeatherBottom;
 
-const WeatherSummaryBottomContainer = styled.div`
+const CurrentWeatherBottomContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

@@ -36,10 +36,40 @@ export const weatherData = [
   },
 ];
 
-export const weatherSummaryData = [
+export const currentWeather = [
   {
-    city: "Helsinki",
+    city: "Jyväskylä",
     description: "Scattered clouds",
+    temperature: "0 ° C",
+    date: "May 2nd",
+    time: "11:53",
+    wind: "5.1 m/s",
+    humidity: "86 %",
+    precipitation: "5 mm",
+  },
+  {
+    city: "Tampere",
+    description: "windy",
+    temperature: "0 ° C",
+    date: "May 2nd",
+    time: "11:53",
+    wind: "5.1 m/s",
+    humidity: "86 %",
+    precipitation: "5 mm",
+  },
+  {
+    city: "Kuopio",
+    description: "windy",
+    temperature: "0 ° C",
+    date: "May 2nd",
+    time: "11:53",
+    wind: "5.1 m/s",
+    humidity: "86 %",
+    precipitation: "5 mm",
+  },
+  {
+    city: "Espoo.",
+    description: "windy",
     temperature: "0 ° C",
     date: "May 2nd",
     time: "11:53",

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import CloudIcon from "../../assets/svgs/CloudIcon";
 import Typography from "../commons/Typography";
 
-WeatherSummaryTop.defaultProps = {
+CurrentWeatherTop.defaultProps = {
   city: "Helsinki",
   description: "Scattered clouds",
   temperature: "0 ° C",
 };
-function WeatherSummaryTop({ city, description, temperature }) {
+function CurrentWeatherTop({ city, description, temperature, icon }) {
   return (
-    <WeatherSummaryTopContainer>
+    <CurrentWeatherTopContainer>
       <TextContainer>
         <Typography fontSize={"xl"} color="black" textAlign={"start"}>
           {city}
@@ -21,19 +21,19 @@ function WeatherSummaryTop({ city, description, temperature }) {
       </TextContainer>
       <WeatherContainer>
         <IconContainer>
-          <CloudIcon />
+          <img src={icon} alt="cloud" />
         </IconContainer>
         <Typography fontSize={"xxxl"} color="black" marginLeft={"10px"}>
-          {temperature}
+          {temperature} ° C
         </Typography>
       </WeatherContainer>
-    </WeatherSummaryTopContainer>
+    </CurrentWeatherTopContainer>
   );
 }
 
-export default WeatherSummaryTop;
+export default CurrentWeatherTop;
 
-const WeatherSummaryTopContainer = styled.div`
+const CurrentWeatherTopContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

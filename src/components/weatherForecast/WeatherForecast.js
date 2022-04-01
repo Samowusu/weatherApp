@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import WeatherDetailCard from "./WeatherDetailCard";
+import WeatherForecastCard from "./WeatherForecastCard";
 
-function WeatherDetails({ weatherList }) {
+function WeatherForecast({ forecastList }) {
   return (
-    <WeatherDetailsContainer>
-      {weatherList.map((weatherItem, index) => (
-        <WeatherDetailCard
+    <WeatherForecastContainer>
+      {forecastList.map((weatherItem, index) => (
+        <WeatherForecastCard
           key={index}
           time={weatherItem.time}
           temperature={weatherItem.temperature}
@@ -15,13 +15,13 @@ function WeatherDetails({ weatherList }) {
           precipitation={weatherItem.precipitation}
         />
       ))}
-    </WeatherDetailsContainer>
+    </WeatherForecastContainer>
   );
 }
 
-export default WeatherDetails;
+export default WeatherForecast;
 
-const WeatherDetailsContainer = styled.div`
+const WeatherForecastContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;

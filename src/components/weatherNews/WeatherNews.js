@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import WeatherDetails from "../weatherDetails/WeatherDetails";
-import WeatherSummary from "../weatherSummary/WeatherSummary";
+import WeatherForecast from "../weatherForecast/WeatherForecast";
+import CurrentWeather from "../currentWeather/CurrentWeather";
 
-function WeatherNews({ weatherSummaryData, weatherDetailsData }) {
+function WeatherNews({ currentWeatherData, weatherForecastData }) {
   return (
     <Main>
       <WeatherNewsContainer>
-        <WeatherSummary summaryData={weatherSummaryData} />
-        <WeatherDetails weatherList={weatherDetailsData} />
+        <CurrentWeather currentWeather={currentWeatherData} />
+        <WeatherForecast forecastList={weatherForecastData} />
       </WeatherNewsContainer>
     </Main>
   );
