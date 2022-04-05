@@ -1,11 +1,13 @@
 import axios from "axios";
 
 const api = process.env.REACT_APP_OPEN_WEATHER_API_KEY;
-export const getWeatherData = async ({ lat, lng }) => {
+
+export const getWeatherData = ({ query, id }) => {
   return new Promise(async (res, rej) => {
     try {
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${api}`
+        `
+https://api.openweathermap.org/data/2.5/${query}?id=${id}&appid=${api}&units=metric`
       );
       res(data);
     } catch (error) {
@@ -14,3 +16,5 @@ export const getWeatherData = async ({ lat, lng }) => {
     }
   });
 };
+
+// api.openweathermap.org/data/2.5/forecast?id={city ID}&appid={API key}

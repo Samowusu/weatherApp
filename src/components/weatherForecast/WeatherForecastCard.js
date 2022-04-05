@@ -10,10 +10,10 @@ import SunIcon from "../../assets/svgs/SunIcon";
 
 WeatherForecastCard.defaultProps = {
   time: "15:00",
-  temperature: "-1°C",
-  wind: "2.1 m/s",
-  humidity: "5 %",
-  precipitation: "10 mm",
+  temperature: "-1",
+  wind: "2.1 ",
+  humidity: "5 ",
+  precipitation: "0",
 };
 
 function WeatherForecastCard({
@@ -22,6 +22,7 @@ function WeatherForecastCard({
   wind,
   humidity,
   precipitation,
+  icon,
 }) {
   return (
     <ForecastCard $borderColor={Theme.ash}>
@@ -29,7 +30,10 @@ function WeatherForecastCard({
         {time}
       </Typography>
       <IconContainer>
-        <SunIcon />
+        <img
+          src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+          alt="cloud"
+        />
       </IconContainer>
       <Typography
         fontSize={"l"}
@@ -37,7 +41,7 @@ function WeatherForecastCard({
         marginTop={"5px"}
         marginBottom="5px"
       >
-        {temperature}
+        {temperature}°C
       </Typography>
       <TextContainer $backgroundColor={Theme.lightBlue} $width={"100%"}>
         <Typography
@@ -46,13 +50,13 @@ function WeatherForecastCard({
           marginBottom={"3px"}
           marginTop={"5px"}
         >
-          {wind}
+          {wind} m/s
         </Typography>
         <Typography fontSize={"s"} color="grey" marginBottom={"3px"}>
-          {humidity}
+          {humidity} %
         </Typography>
         <Typography fontSize={"s"} color="grey" marginBottom={"5px"}>
-          {precipitation}
+          {precipitation}mm
         </Typography>
       </TextContainer>
     </ForecastCard>

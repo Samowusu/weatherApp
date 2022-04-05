@@ -4,7 +4,7 @@ import DropDownIcon from "../../assets/svgs/DropDownIcon";
 import { Theme } from "../../Theme";
 import Typography from "../commons/Typography";
 
-const options = ["Kaikki kaupungit", "Tampere", "Jyväskylä", "Kuopio", "Espoo"];
+const options = ["Kaikki kaupungit", "Tampere", "Jyvaskyla", "Kuopio", "Espoo"];
 
 function DropDown({ onChange }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,6 +51,7 @@ export default DropDown;
 
 const DropDownContainer = styled.div`
   width: 90%;
+  max-width: 2000px;
   margin: 0 auto;
   cursor: pointer;
 `;

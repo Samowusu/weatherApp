@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CloudIcon from "../../assets/svgs/CloudIcon";
 import Typography from "../commons/Typography";
 
 CurrentWeatherTop.defaultProps = {
@@ -21,10 +20,13 @@ function CurrentWeatherTop({ city, description, temperature, icon }) {
       </TextContainer>
       <WeatherContainer>
         <IconContainer>
-          <img src={icon} alt="cloud" />
+          <img
+            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+            alt="cloud"
+          />
         </IconContainer>
         <Typography fontSize={"xxxl"} color="black" marginLeft={"10px"}>
-          {temperature} ° C
+          {temperature}°C
         </Typography>
       </WeatherContainer>
     </CurrentWeatherTopContainer>
@@ -50,6 +52,10 @@ export const TextContainer = styled.div`
 const WeatherContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 `;
 
-export const IconContainer = styled.div``;
+export const IconContainer = styled.div`
+  width: 50px;
+  height: 50px;
+`;

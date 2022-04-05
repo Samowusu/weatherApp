@@ -5,16 +5,20 @@ import WeatherForecastCard from "./WeatherForecastCard";
 function WeatherForecast({ forecastList }) {
   return (
     <WeatherForecastContainer>
-      {forecastList.map((weatherItem, index) => (
-        <WeatherForecastCard
-          key={index}
-          time={weatherItem.time}
-          temperature={weatherItem.temperature}
-          humidity={weatherItem.humidity}
-          wind={weatherItem.wind}
-          precipitation={weatherItem.precipitation}
-        />
-      ))}
+      {forecastList?.map((weatherItem, index) => {
+        const date = weatherItem?.dt_txt?.split(" ");
+        return (
+          <WeatherForecastCard
+            key={index}
+            time={date[1]}
+            temperature={weatherItem?.main?.temp}
+            humidity={weatherItem?.main?.humidity}
+            wind={weatherItem?.wind?.speed}
+            precipitation={weatherItem?.rain?.["3h"]}
+            icon={weatherItem?.weather[0].icon}
+          />
+        );
+      })}
     </WeatherForecastContainer>
   );
 }

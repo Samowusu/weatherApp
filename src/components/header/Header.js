@@ -26,6 +26,11 @@ const HeaderTop = styled.div`
 
 const HeaderBottom = styled.div`
   width: 100%;
+  max-width: 2000px;
+  @media (min-width: 2000px) {
+    margin: 0 auto;
+  }
+
   display: flex;
   justify-content: center;
   padding: 30px 0;

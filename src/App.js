@@ -1,72 +1,121 @@
 import React, { useState, useEffect } from "react";
 import DropDown from "./components/dropDown/DropDown";
 import Header from "./components/header/Header";
-import WeatherNews from "./components/weatherNews/WeatherNews";
+import WeatherNews, { Main } from "./components/weatherNews/WeatherNews";
+import { CircularProgress } from "@material-ui/core";
 
-// Data
-import { weatherData, currentWeather } from "./Data";
 import { getWeatherData } from "./services/api";
 
 function App() {
-  const [filteredCity, setFilteredCity] = useState(null);
+  const [selectedCity, setSelectedCity] = useState(null);
   const [currentWeatherState, setCurrentWeatherState] = useState([]);
+  const [weatherForecastState, setWeatherForecastState] = useState([]);
+  const [weatherDataState, setWeatherDataState] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [filteredCitiesState, setFilteredCitiesState] = useState([]);
 
-  const coords = [
-    { lat: 62.1332752, lng: 25.0954831 },
-    { lat: 61.6307819, lng: 23.2698994 },
-    { lat: 62.9933927, lng: 26.5529307 },
-    { lat: 60.2064642, lng: 24.3949373 },
+  const cityIDs = [
+    { id: 634963 },
+    { id: 655195 },
+    { id: 650225 },
+    { id: 660129 },
   ];
 
-  // useEffect(() => {
-  //   let currentWeatherArray = [];
-  //   coords.forEach((coord) => {
-  //     getWeatherData({ lat: coord.lat, lng: coord.lng }).then((data) => {
-  //       console.log(data);
-  //       currentWeatherArray.push(data);
-  //     });
-  //   });
-  //   console.log({ currentWeatherArray });
-  // }, []);
+  //CURRENT WEATHER DATA FETCHING
   useEffect(() => {
     (async function () {
       let currentWeatherArray = [];
       const response = await Promise.all(
-        coords.map((coord) => {
-          return getWeatherData({ lat: coord.lat, lng: coord.lng });
+        cityIDs.map((city) => {
+          return getWeatherData({
+            query: "weather",
+            id: city.id,
+          });
         })
       );
-      console.log({ response });
       currentWeatherArray.push(...response);
-      console.log({ currentWeatherArray });
 
       setCurrentWeatherState(currentWeatherArray);
-      setIsLoading(false);
+    })();
+  }, []);
+
+  //WEATHER FORECAST DATA FETCHING
+  useEffect(() => {
+    (async function () {
+      let weatherForecastArray = [];
+      const response = await Promise.all(
+        cityIDs.map((city) => {
+          return getWeatherData({
+            id: city.id,
+            query: "forecast",
+          });
+        })
+      );
+      const responseList = response.map((res) => res.list);
+      responseList.forEach((listItem) => {
+        const updatedList = listItem.splice(0, 5);
+        weatherForecastArray.push(updatedList);
+      });
+      setWeatherForecastState(weatherForecastArray);
     })();
   }, []);
 
   useEffect(() => {
-    console.log(filteredCity);
-  }, [filteredCity]);
+    if (
+      currentWeatherState.length > 0 &&
+      weatherForecastState.length > 0 &&
+      weatherDataState.length > 0
+    )
+      setIsLoading(false);
+  }, [currentWeatherState, weatherForecastState, weatherDataState]);
 
+  //LOGIC FOR CREATING AN ARRAY WITH BOTH CURRENT AND FORECAST WEATHER DATA
+  useEffect(() => {
+    let currentAndForecastData = [];
+    for (let i = 0; i < currentWeatherState.length; i++) {
+      currentAndForecastData.push([
+        currentWeatherState[i],
+        weatherForecastState[i],
+      ]);
+    }
+    setWeatherDataState(currentAndForecastData);
+  }, [currentWeatherState, weatherForecastState]);
+
+  //CITY FILTERING LOGIC
+  useEffect(() => {
+    const filteredCities = weatherDataState?.filter(
+      (city) => city[0].name === selectedCity
+    );
+    if (filteredCities.length === 0) {
+      setFilteredCitiesState(weatherDataState);
+    } else {
+      setFilteredCitiesState(filteredCities);
+    }
+  }, [weatherDataState, selectedCity]);
+
+  //CITY FILTER EVENT HANDLER
   const cityFilterHandler = (value) => {
-    setFilteredCity(value);
-    console.log("from glossary");
+    setSelectedCity(value);
   };
+
   return (
     <>
       <Header />
 
       <DropDown onChange={(value) => cityFilterHandler(value)} />
-      {!isLoading &&
-        currentWeatherState.map((weather, index) => (
-          <WeatherNews
-            currentWeatherData={weather}
-            key={index}
-            weatherForecastData={weatherData}
-          />
-        ))}
+      <Main>
+        {isLoading && <CircularProgress size={"5rem"} />}
+        {!isLoading &&
+          filteredCitiesState?.map((weather, index) => {
+            return (
+              <WeatherNews
+                currentWeatherData={weather[0]}
+                key={index}
+                weatherForecastData={weather[1]}
+              />
+            );
+          })}
+      </Main>
     </>
   );
 }

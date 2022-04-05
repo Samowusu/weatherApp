@@ -8,7 +8,7 @@ CurrentWeatherBottom.defaultProps = {
   time: "11:53",
   wind: "5.1 m/s",
   humidity: "86 %",
-  precipitation: "5 ",
+  precipitation: "0",
 };
 function CurrentWeatherBottom({ date, time, wind, humidity, precipitation }) {
   return (
